@@ -1,45 +1,34 @@
 package com.library.LibraryManagementSystem.model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name="user",schema = "library")
 public class User {
 
-    private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @Positive
+    private int id;
+
+    @Column(name = "user_name")
+    private String username;
+
+    @Column(name = "password")
     private int password;
-    private String role;
 
-    public User(){
+    @Column(name = "is_banned")
+    private boolean isBanned;
 
-    }
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public User(String name,int password,String role){
-        this.name=name;
-        this.password=password;
-        this.role=role;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPassword() {
-        return password;
-    }
-
-    public void setPassword(int password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }
