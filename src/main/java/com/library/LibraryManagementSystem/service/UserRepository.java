@@ -1,4 +1,4 @@
-package com.library.LibraryManagementSystem.dao;
+package com.library.LibraryManagementSystem.service;
 
 import com.library.LibraryManagementSystem.model.User;
 

@@ -1,6 +1,6 @@
 package com.library.LibraryManagementSystem.controller;
 
-import com.library.LibraryManagementSystem.dao.UserRepository;
+import com.library.LibraryManagementSystem.service.UserRepository;
 import com.library.LibraryManagementSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

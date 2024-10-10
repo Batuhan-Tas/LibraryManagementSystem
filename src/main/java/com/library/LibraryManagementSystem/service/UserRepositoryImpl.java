@@ -1,17 +1,16 @@
-package com.library.LibraryManagementSystem.dao;
+package com.library.LibraryManagementSystem.service;
 
 import com.library.LibraryManagementSystem.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
 
     private EntityManager entityManager;
 
