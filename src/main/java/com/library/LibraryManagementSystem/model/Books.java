@@ -15,9 +15,6 @@ public class Books {
     @Column(name = "book_id")
     private int book_id;
 
-    @Column(name = "user_id")
-    private int user_id;
-
     @Column(name = "name")
     private String name;
 
@@ -29,4 +26,8 @@ public class Books {
 
     @Enumerated(EnumType.STRING)
     private Condition condition;
+
+    @ManyToOne(cascade={ CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name="user_id")
+    private User user;
 }

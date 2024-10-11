@@ -19,7 +19,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     @Positive
     private int user_id;
 
@@ -34,5 +34,11 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    //Bi-directional
+
+
+
+
 
 }

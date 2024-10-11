@@ -3,9 +3,12 @@ package com.library.LibraryManagementSystem.service;
 import com.library.LibraryManagementSystem.dao.UserRepository;
 import com.library.LibraryManagementSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService{
 
 
@@ -23,7 +26,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> getByName(String name) {
-        return userRepository.getByName(name);
+        Optional<List> list = userRepository.getByName(name);
+        if(list.isPresent()){
+            return list.get();
+        }
+        return null;
     }
 
     @Override
