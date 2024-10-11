@@ -11,4 +11,5 @@ public interface BookService {
     Books save(Books book);
     Books update(Books book);
     void delete(int id);
+    List<Books> findByGenre(String genre);
 }

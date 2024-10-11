@@ -15,6 +15,9 @@ public class Books {
     @Column(name = "book_id")
     private int book_id;
 
+    @Column(name = "user_id")
+    private int user_id;
+
     @Column(name = "name")
     private String name;
 

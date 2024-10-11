@@ -4,12 +4,11 @@ import com.library.LibraryManagementSystem.model.User;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface UserService {
 
     List<User> get();
-    User getByName(String name);
+    List<User> getByName(String name);
     User save(User user);
     User update(User user);
-    User delete(String name);
-
+    void delete(int id);
 }

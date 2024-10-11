@@ -52,5 +52,14 @@ public class BookController {
             System.out.println("Deleted successfully");
         }
 
+
     }
+
+    @GetMapping("/{genre}")
+    public List<Books> books(@PathVariable String genre){
+        return bookService.findByGenre(genre);
+    }
+
+
+
 }
