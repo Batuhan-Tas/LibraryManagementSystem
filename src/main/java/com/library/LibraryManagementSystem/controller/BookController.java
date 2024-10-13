@@ -43,10 +43,10 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable int id) throws Exception{
         Books book = bookService.findById(id);
         if(book == null){
-            //Throw exception 404
+            throw new Exception("A book with given ID does not exist");
         }else{
             bookService.delete(id);
             System.out.println("Deleted successfully");

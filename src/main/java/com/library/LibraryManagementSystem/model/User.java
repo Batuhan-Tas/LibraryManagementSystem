@@ -20,7 +20,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    @Positive
     private int user_id;
 
     @Column(name = "user_name")
@@ -36,6 +35,9 @@ public class User {
     private Role role;
 
     //Bi-directional
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="book_id")
+    private Books books;
 
 
 

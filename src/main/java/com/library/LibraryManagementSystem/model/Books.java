@@ -27,7 +27,7 @@ public class Books {
     @Enumerated(EnumType.STRING)
     private Condition condition;
 
-    @ManyToOne(cascade={ CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name="user_id")
+
+    @OneToOne(mappedBy = "books",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
     private User user;
 }

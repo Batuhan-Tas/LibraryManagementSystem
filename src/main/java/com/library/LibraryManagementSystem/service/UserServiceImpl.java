@@ -1,6 +1,7 @@
 package com.library.LibraryManagementSystem.service;
 
 import com.library.LibraryManagementSystem.dao.UserRepository;
+import com.library.LibraryManagementSystem.model.Books;
 import com.library.LibraryManagementSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,19 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void delete(int id) {
+
         userRepository.deleteById(id);
 
     }
+
+    @Override
+    public User findById(int id) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
+
+
 }

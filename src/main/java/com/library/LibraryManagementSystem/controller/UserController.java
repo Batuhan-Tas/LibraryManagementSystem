@@ -1,6 +1,7 @@
 package com.library.LibraryManagementSystem.controller;
 
 import com.library.LibraryManagementSystem.dao.UserRepository;
+import com.library.LibraryManagementSystem.model.Role;
 import com.library.LibraryManagementSystem.model.User;
 import com.library.LibraryManagementSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,15 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public User delete(@PathVariable int id){
-        userService.delete(id);
+    public User delete(@PathVariable int id) throws Exception{
+        User user = userService.findById(id);
+
+        if(user.getRole().equals(Role.ADMIN)){
+            throw new Exception("Action not allowed. Administrators can not be removed.");
+        }else{
+            userService.delete(id);
+        }
+
         return null;
     }
 
