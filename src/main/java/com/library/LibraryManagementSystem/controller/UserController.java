@@ -1,6 +1,7 @@
 package com.library.LibraryManagementSystem.controller;
 
 import com.library.LibraryManagementSystem.dao.UserRepository;
+import com.library.LibraryManagementSystem.model.Books;
 import com.library.LibraryManagementSystem.model.Role;
 import com.library.LibraryManagementSystem.model.User;
 import com.library.LibraryManagementSystem.service.UserService;
@@ -51,6 +52,22 @@ public class UserController {
         }
 
         return null;
+    }
+
+    @PostMapping("/lendBook/{userId}")
+    public User lendBook(@RequestBody Books book, @PathVariable int userId){
+        User user = userService.findById(userId);
+        book.setUser(user);
+        user.lendBook(book);
+        return userService.save(user);
+    }
+
+    @PostMapping("/returnBook/{userId}")
+    public User returnBook(@RequestBody Books book, @PathVariable int userId){
+        User user = userService.findById(userId);
+        book.setUser(null);
+        user.returnBook();
+        return userService.save(user);
     }
 
 

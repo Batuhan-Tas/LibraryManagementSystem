@@ -1,5 +1,6 @@
 package com.library.LibraryManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -7,7 +8,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import java.awt.print.Book;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -35,9 +39,21 @@ public class User {
     private Role role;
 
     //Bi-directional
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="book_id")
-    private Books books;
+
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Books> books;
+
+    public void lendBook(Books book){
+        if(books == null){
+            books = new ArrayList<>();
+        }
+        books.add(book);
+    }
+
+    public void returnBook(){
+        books = new ArrayList<>();
+
+    }
 
 
 

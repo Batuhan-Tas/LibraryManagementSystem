@@ -28,6 +28,8 @@ public class Books {
     private Condition condition;
 
 
-    @OneToOne(mappedBy = "books",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "user_id_detail")
     private User user;
+
 }
