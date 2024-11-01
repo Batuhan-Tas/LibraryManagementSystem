@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Books,Integer> {
 
-    @Query(value = "SELECT * FROM library.books as b WHERE b.gender = gender", nativeQuery = true)
+    @Query(value = "SELECT * FROM library.books as b WHERE b.genre = genre", nativeQuery = true)
     List<Books> findByGenre(String genre);
 }

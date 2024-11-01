@@ -4,6 +4,9 @@ import com.library.LibraryManagementSystem.dao.UserRepository;
 import com.library.LibraryManagementSystem.model.Books;
 import com.library.LibraryManagementSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService, UserDetailsService {
 
 
     private UserRepository userRepository;
@@ -63,5 +66,8 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
-
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User credentials are not valid"));
+    }
 }

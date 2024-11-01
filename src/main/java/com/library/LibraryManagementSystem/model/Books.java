@@ -12,8 +12,8 @@ public class Books {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_id")
-    private int book_id;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -29,7 +29,7 @@ public class Books {
 
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "user_id_detail")
+    @JoinColumn(name = "id_detail")
     private User user;
 
 }
