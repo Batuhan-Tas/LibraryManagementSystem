@@ -26,6 +26,8 @@ public class SecurityConfig {
         return new ProviderManager(daoAuthenticationProvider);
     }
 
+    //All endpoints regarding authentication are set to .permitAll() other than those that require authentication to perform.
+    //Or else new user wouldn't be able to access to log in UI.
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         return http.csrf(csrf -> csrf.disable())
